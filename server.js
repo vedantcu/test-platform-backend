@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "*" })); // Allows all origins (Modify for security)
 
 // ✅ Ensure MONGO_URI is Defined
 if (!process.env.MONGO_URI) {
@@ -19,14 +19,20 @@ if (!process.env.MONGO_URI) {
   process.exit(1);
 }
 
-// ✅ Connect to MongoDB
-mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("✅ SUCCESS: Connected to MongoDB"))
-  .catch((err) => {
+// ✅ Connect to MongoDB with Retry Mechanism
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds
+    });
+    console.log("✅ SUCCESS: Connected to MongoDB Atlas");
+  } catch (err) {
     console.error("❌ ERROR: MongoDB Connection Failed:", err.message);
-    process.exit(1);
-  });
+    setTimeout(connectDB, 5000); // Retry connection after 5 seconds
+  }
+};
+connectDB();
+
 
 // ✅ Fetch Questions API
 app.get("/api/questions", async (req, res) => {
@@ -50,6 +56,10 @@ app.get("/api/questions", async (req, res) => {
 app.post("/api/save-result", async (req, res) => {
   try {
     const { user, subject, topic, score, totalQuestions, correctAnswers } = req.body;
+
+    if (!user || !subject || !topic || score === undefined || !totalQuestions || !correctAnswers) {
+      return res.status(400).json({ message: "❌ ERROR: Missing required fields" });
+    }
 
     const newResult = new TestResult({
       user,
