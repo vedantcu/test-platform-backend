@@ -1,0 +1,642 @@
+/* ✅ Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* ✅ Test Page */
+.test-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Timer */
+.timer {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #dc3545;
+    margin-bottom: 15px;
+    padding: 8px;
+    border-radius: 5px;
+    background: #fff3cd;
+}
+
+/* ✅ Dark Mode Timer */
+.dark .timer {
+    background: #222;
+    color: #ff5555;
+}
+
+/* ✅ Question Box */
+.question-box {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+/* ✅ Question Text */
+.question-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* ✅ Dark Mode Question Text */
+.dark .question-text {
+    color: #ffffff;
+}
+
+/* ✅ Options Styling */
+.options {
+    margin-top: 10px;
+}
+
+.option-box {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.option-box:hover {
+    background: #e3f2fd;
+}
+
+.option-box input {
+    margin-right: 10px;
+}
+
+/* ✅ Highlight Correct & Incorrect Answers */
+.correct-answer {
+    background: #d4edda !important;
+    border: 2px solid #28a745;
+}
+
+.wrong-answer {
+    background: #f8d7da !important;
+    border: 2px solid #dc3545;
+}
+
+/* ✅ Submit Button */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(90deg, #0056b3, #004080);
+}
+
+/* ✅ Dark Mode */
+.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* ✅ Dark Mode Test Container */
+.dark .test-container {
+    background: #000000;
+    color: white;
+    border: 1px solid #444;
+}
+
+/* ✅ Dark Mode Question Box */
+.dark .question-box {
+    background: #000000;
+    border: 1px solid #888;
+}
+
+/* ✅ Dark Mode Options */
+.dark .option-box {
+    background: #222;
+    color: white;
+}
+.dark .option-box:hover {
+    background: #333;
+}
+
+/* ✅ Dark Mode Solution Box */
+.dark .solution {
+    background: #222;
+    color: #ddd;
+    border-left: 5px solid #007bff;
+}
+
+/* ✅ Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.dark-mode-toggle:hover {
+    background: #0056b3;
+}
+/* ✅ Ensure Test Title is White in Dark Mode */
+.dark h1 {
+    color: white !important;
+    text-align: center;
+}
+
+/* ✅ Ensuring Other Headings are Visible */
+.dark h2, 
+.dark h3, 
+.dark p {
+    color: white !important;
+}
+/* ✅ Dark Mode Styles */
+.dark {
+    background-color: #121212;
+    color: white;
+}
+
+/* ✅ Apply Dark Mode to Test Container */
+.dark .test-container {
+    background: #1e1e1e;
+    color: white;
+    border: 1px solid #444;
+}
+
+/* ✅ Dark Mode for Question Box */
+.dark .question-box {
+    background: #2a2a2a;
+    border: 1px solid #555;
+}
+
+/* ✅ Dark Mode for Test Title */
+.dark .test-title {
+    color: white;
+}
+
+/* ✅ Dark Mode for Option Boxes */
+.dark .option-box {
+    background: #333;
+    color: white;
+}
+.dark .option-box:hover {
+    background: #444;
+}
+
+/* ✅ Dark Mode Correct & Incorrect Highlight */
+.dark .correct-answer {
+    background: #1f7a1f !important; /* Dark Green */
+}
+.dark .wrong-answer {
+    background: #7a1f1f !important; /* Dark Red */
+}
+
+/* ✅ Dark Mode for Solution Box */
+.dark .solution {
+    background: #333;
+    color: #ddd;
+    border-left: 5px solid #007bff;
+}
+
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+    .test-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .options label {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .submit-btn {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* Category Buttons */
+.category-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.category-btn {
+    padding: 12px;
+    font-size: 18px;
+    width: 200px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.category-btn:hover {
+    background-color: #0056b3;
+}
+/* Folder Buttons */
+.folder-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.folder-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 250px;
+    text-align: center;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.folder-btn:hover {
+    background-color: #218838;
+}
+
+/* Back Button */
+.back-btn {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.back-btn:hover {
+    background-color: #c82333;
+}
+
+/* ✅ Modern Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Dark Mode Navbar */
+.dark-navbar {
+    background: linear-gradient(90deg, #222, #111);
+}
+
+/* ✅ Navbar Left (Logo) */
+.nav-logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+/* ✅ Navbar Buttons */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn {
+    font-size: 16px;
+    padding: 10px 18px;
+    background: white;
+    color: #007bff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-btn:hover {
+    background: #0056b3;
+    color: white;
+}
+
+/* ✅ Dark Mode Styles for Buttons */
+.dark-navbar .nav-btn {
+    background: #333;
+    color: white;
+}
+
+.dark-navbar .nav-btn:hover {
+    background: #007bff;
+}
+
+/* ✅ Dark Mode Toggle Button */
+.dark-mode-toggle {
+    padding: 8px 15px;
+    background: white;
+    color: #007bff;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.dark-mode-toggle:hover {
+    background: #007bff;
+    color: white;
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+        gap: 15px;
+    }
+
+    .nav-btn {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    .dark-mode-toggle {
+        margin-top: 10px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+/*.analytics-container {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* ✅ Dark Mode Styling */
+.dark .analytics-container {
+    background: #1e1e1e;
+    color: white;
+}
+
+.analytics-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* ✅ Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+.dark th {
+    background-color: #444;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.dark tr:nth-child(even) {
+    background-color: #2a2a2a;
+}*/
+/* ✅ Score Display Box */
+.score-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark .score-box {
+    background: #222;
+    color: white;
+    border: 1px solid #555;
+}
+
+.score-box h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.score-box h3 span {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 24px;
+}
+/* ✅ Analytics Container */
+.analytics-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.dark .analytics-container {
+    background-color: #121212; /* Dark mode background */
+    color: white;
+}
+
+/* ✅ Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    color: black;  /* ✅ Default for Light Mode */
+}
+
+/* ✅ Light Mode Table Header */
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+/* ✅ Fix Table Content for Dark Mode */
+.dark table {
+    border-color: #444;
+}
+
+.dark th {
+    background-color: #0056b3;
+    color: white;
+}
+
+.dark td {
+    color: white !important; /* ✅ Ensure table content is visible */
+    border-color: #444;
+}
+
+.dark tr {
+    background-color: #222; /* ✅ Dark row background */
+}
+
+/* ✅ Highlight Rows in Dark Mode */
+.dark tr:nth-child(even) {
+    background-color: #333;
+}
+
+.dark tr:hover {
+    background-color: #444;
+}
+
+/* ✅ Loading Message */
+.loading-message {
+    font-size: 18px;
+    color: #007bff;
+    margin-top: 20px;
+}
+
+.dark .loading-message {
+    color: white;
+}
+/* ✅ Auth Container (Sign-In Button) */
+.auth-container {
+    position: absolute;
+    right: 150px;  /* ✅ Adjusted Position */
+    top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ✅ Sign-In Button */
+.auth-btn {
+    background-color: #ff6f61;
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    font-weight: bold;
+}
+ 
+.auth-btn:hover {
+    background-color: #e85a50;
+}
+
+/* ✅ User Info Styling */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ✅ Profile Picture */
+.user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* ✅ User Welcome Message */
+.user-info p {
+    color: white;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ✅ Fix Overlapping Issue */
+.dark-mode-toggle {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    background: #222;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.dark-mode-toggle:hover {
+    background: #444;
+}
+
+/* ✅ Responsive Fix for Mobile */
+@media (max-width: 768px) {
+    .auth-container {
+        position: static;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .dark-mode-toggle {
+        position: static;
+        margin-top: 10px;
+    }
+}
+
+
+
+
