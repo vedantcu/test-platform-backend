@@ -8,11 +8,11 @@ const Test = () => {
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
 
-  // Fetch questions on component mount
+  // Fetch questions from the hosted backend
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/questions?subject=Maths&topic=Vectors");
+        const response = await axios.get("https://test-platform-backend-fan9.onrender.com/api/questions?subject=Maths&topic=Vectors");
         setQuestions(response.data);
       } catch (error) {
         console.error("Error fetching questions:", error);
@@ -26,12 +26,14 @@ const Test = () => {
     if (timer > 0 && !submitted) {
       const interval = setInterval(() => setTimer((prev) => prev - 1), 1000);
       return () => clearInterval(interval);
-    } else if (timer === 0) {
+    } else if (timer === 0 && !submitted) {
       handleSubmit(); // Auto-submit when timer reaches 0
     }
   }, [timer, submitted]);
 
   const handleSubmit = () => {
+    if (submitted) return; // Prevent multiple submissions
+    
     let calculatedScore = 0;
     questions.forEach((q) => {
       if (answers[q._id] === q.correctAnswer) {
@@ -40,7 +42,7 @@ const Test = () => {
         calculatedScore -= 1; // -1 for incorrect answer
       }
     });
-    setScore(calculatedScore);
+    setScore(calculatedScore >= 0 ? calculatedScore : 0); // Prevent negative scores
     setSubmitted(true);
   };
 
@@ -48,14 +50,14 @@ const Test = () => {
     <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h1>Vectors Test</h1>
       <p>
-        <strong>Time Left:</strong> {Math.floor(timer / 60)}:{timer % 60 < 10 ? "0" : ""}{timer % 60}
+        <strong>Time Left:</strong> {Math.floor(timer / 60)}:{String(timer % 60).padStart(2, "0")}
       </p>
       {questions.length === 0 ? (
         <p>Loading questions...</p>
       ) : (
         questions.map((q, index) => (
           <div
-            key={index}
+            key={q._id}
             style={{
               border: "1px solid black",
               padding: "10px",
