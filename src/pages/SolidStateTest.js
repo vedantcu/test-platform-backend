@@ -11,7 +11,7 @@ const SolidStateTest = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/questions?topic=Solid State");
+        const response = await axios.get("http://test-platform-backend-fan9.onrender.com//api/questions?topic=Solid State");
         setQuestions(response.data);
       } catch (error) {
         console.error("Error fetching questions:", error);
