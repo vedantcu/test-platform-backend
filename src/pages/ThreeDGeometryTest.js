@@ -14,7 +14,7 @@ const ThreeDGeometryTest = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/questions?topic=3D%20Geometry");
+        const response = await axios.get("https://test-platform-backend-fan9.onrender.com/api/questions?topic=3D%20Geometry");
         setQuestions(response.data);
       } catch (error) {
         console.error("Error fetching questions:", error);
